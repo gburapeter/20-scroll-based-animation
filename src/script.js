@@ -9,6 +9,7 @@ THREE.ColorManagement.enabled = false;
 // const gui = new dat.GUI();
 let scrollY = window.scrollY;
 let currentSection = 0;
+
 /**
  * Cursor
  */
@@ -16,6 +17,9 @@ const cursor = {};
 cursor.x = 0;
 cursor.y = 0;
 
+/**
+ * Params
+ */
 const parameters = {
 	materialColor: "red",
 };
@@ -37,6 +41,9 @@ const scene = new THREE.Scene();
 const textureLoader = new THREE.TextureLoader();
 const particleTexture = textureLoader.load("/textures/9.png");
 
+/**
+ * Distance of a section
+ */
 const objectsDistance = 4;
 /**
  * Objects
@@ -58,15 +65,24 @@ mesh1.position.x = 2;
 mesh2.position.x = -2;
 mesh3.position.x = 2;
 scene.add(mesh1, mesh2, mesh3);
+
+/**
+ * Meshes array
+ */
 const sectionMeshes = [mesh1, mesh2, mesh3];
+
 /**
  * Particles
  */
-// Geometry
+
 const particlesCount = 150;
 const positions = new Float32Array(particlesCount * 3);
 const PARTICLE_SIZE = 20;
 const newSizes = [];
+
+/**
+ * Create position and random size
+ */
 for (let i = 0; i < particlesCount; i++) {
 	positions[i * 3 + 0] = (Math.random() - 0.5) * 10;
 	positions[i * 3 + 1] =
@@ -77,7 +93,11 @@ for (let i = 0; i < particlesCount; i++) {
 	newSizes[i] = Math.random() * PARTICLE_SIZE;
 }
 
+/**
+ * Geometry
+ */
 const particlesGeometry = new THREE.BufferGeometry();
+
 particlesGeometry.setAttribute(
 	"position",
 	new THREE.BufferAttribute(positions, 3)
@@ -101,6 +121,7 @@ particlesMaterial.blending = THREE.AdditiveBlending;
 // Points
 const particles = new THREE.Points(particlesGeometry, particlesMaterial);
 scene.add(particles);
+
 /**
  * Lights
  */
@@ -129,6 +150,9 @@ window.addEventListener("resize", () => {
 	renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 });
 
+/**
+ * Listen to scroll
+ */
 window.addEventListener("scroll", () => {
 	scrollY = window.scrollY;
 
@@ -146,6 +170,9 @@ window.addEventListener("scroll", () => {
 	}
 });
 
+/**
+ * Mouse move
+ */
 window.addEventListener("mousemove", (event) => {
 	cursor.x = event.clientX / sizes.width - 0.5;
 	cursor.y = event.clientY / sizes.height - 0.5;
