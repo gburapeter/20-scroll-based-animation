@@ -63,7 +63,7 @@ const sectionMeshes = [mesh1, mesh2, mesh3];
  * Particles
  */
 // Geometry
-const particlesCount = 100;
+const particlesCount = 150;
 const positions = new Float32Array(particlesCount * 3);
 const PARTICLE_SIZE = 20;
 const newSizes = [];
@@ -138,7 +138,7 @@ window.addEventListener("scroll", () => {
 		currentSection = newSection;
 
 		gsap.to(sectionMeshes[currentSection].rotation, {
-			duration: 1.5,
+			duration: 4,
 			ease: "power2.inOut",
 			x: "+=6",
 			y: "+=3",

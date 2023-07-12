@@ -29,10 +29,10 @@ html {
     align-items: center;
     height: 100vh;
     position: relative;
-    font-family: 'Caveat', cursive;
+    font-family: 'Caprasimo', cursive;
     color: #ffeded;
     text-transform: uppercase;
-    font-size: 7vmin;
+    font-size: 5vmin;
     padding-left: 10%;
     padding-right: 10%;
 }
@@ -49,7 +49,7 @@ section:nth-child(odd)
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: normal;
-    font-size: 7vmin;
+    font-size: 5vmin;
     align-items: normal;
     align-content: normal;
   }
